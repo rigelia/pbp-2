@@ -10,3 +10,5 @@ def show_main(request):
         "effects": "+200 Attack, +50 range, +3 speed."
     }
     return render(request, "main.html", context)
+
+# AKu suka pbp
