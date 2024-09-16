@@ -1,13 +1,22 @@
-<h3> Fadiansah Feryan Fatha (2306275185)</h3>
-
-<h1> Welcome to the item shop! </h1>
-<h2> Here are the items available for purchase: </h2>
-<h5>Item Name :</h5>
-<p>{{name}}</p>
-<h5>Price :</h5>
-<p>{{price}} gold</p>
-<h5>Description :</h5>
-<p>{{description}}</p>
-<h5>Effects :</h5>
-<p>{{effects}}</p>
-
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Welcome to the product entry form!</h1>
+{% if not prduct_entries %}
+    <p>There are no product entries yet.</p>
+{% else %}
+<table>
+    <tr>
+        <th>Product Name</th>
+        <th>Product Description</th>
+        <th>Product Price</th>
+    </tr>
+    {% for product_entry in product_entries %}
+    <tr>
+        <td>{{ product_entry.product_name }}</td>
+        <td>{{ product_entry.product_description }}</td>
+        <td>{{ product_entry.product_price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}
