@@ -1,5 +1,6 @@
 # Link deployment : http://fadiansah-feryan-tugas2.pbp.cs.ui.ac.id/
 
+
 <details>
 <summary> <h1> Tugas 1 </h1> </summary>
 <br>
@@ -9,6 +10,7 @@
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 <p>Saya pertama menginitialize git repo (tetapi belum disambung dengan repo di github), lalu membuat virtual environment dan menginisialisasi Django project. Saya lalu memenuhi syarat tugas 2 pada bagian - bagian yang berbeda.</p>
+
 # Pertanyaan 2
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html
