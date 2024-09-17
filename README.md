@@ -1,10 +1,11 @@
 # Link deployment : http://fadiansah-feryan-tugas2.pbp.cs.ui.ac.id/
 
 <details>
-<summary> Tugas 1 </summary>
+<summary> <h1> Tugas 1 </h1> </summary>
 <br>
 
-# Pertanyaan 1 
+# Pertanyaan 1
+
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 Saya pertama menginitialize git repo (tetapi belum disambung dengan repo di github), lalu membuat virtual environment dan menginisialisasi Django project. Saya lalu memenuhi syarat tugas 2 pada bagian - bagian yang berbeda.
@@ -35,7 +36,7 @@ Karena model pada Django berfungsi sebagai basis data untuk apa yang akan ditunj
 
 <details/>
 <details>
-<summary> Tugas 2 </summary>
+<summary> <h1> Tugas 2 </h1> </summary>
 <br>
 
 # Pertanyaan 1
@@ -65,4 +66,5 @@ Mengapa kita membutuhkan `csrf_token` saat membuat form di Django? Apa yang dapa
 # Pertanyaan 5
 
 Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
 </details>
