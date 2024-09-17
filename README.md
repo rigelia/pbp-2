@@ -34,7 +34,8 @@ Mengapa model pada Django disebut sebagai ORM?
 
 Karena model pada Django berfungsi sebagai basis data untuk apa yang akan ditunjukkan kepada end-user dengan template.
 
-<details/>
+</details>
+
 <details>
 <summary> <h1> Tugas 2 </h1> </summary>
 <br>
