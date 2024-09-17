@@ -7,11 +7,9 @@ from main.forms import ProductEntry
 
 # Create your views here.
 def show_main(request):
+    product_entries = Product.objects.all()
     context = {
-        "name": "Hawk's Revenge",
-        "price": 2700,
-        "description": "An angel makes itself look scary to ward away evil, A demon makes itself look beautiful to deceive humans, The wolf howls but the hawk growls.",
-        "effects": "+200 Attack, +50 range, +3 speed.",
+        "product_entries": product_entries,
     }
     return render(request, "main.html", context)
 
@@ -24,7 +22,7 @@ def create_product(request):
         return redirect("main:show_main")
 
     context = {"form": form}
-    return render(request, "create_products.html", context)
+    return render(request, "create_product_entry.html", context)
 
 
 def show_xml(request):

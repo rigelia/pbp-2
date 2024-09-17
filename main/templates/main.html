@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Welcome to the product entry form!</h1>
-{% if not prduct_entries %}
-    <p>There are no product entries yet.</p>
+<h1>Welcome to the product entry form!</h1>
+{% if not product_entries %}
+<p>There are no product entries yet.</p>
 {% else %}
 <table>
     <tr>
@@ -12,11 +12,12 @@
     </tr>
     {% for product_entry in product_entries %}
     <tr>
-        <td>{{ product_entry.product_name }}</td>
-        <td>{{ product_entry.product_description }}</td>
-        <td>{{ product_entry.product_price }}</td>
+        <td>{{ product_entry.name }}</td>
+        <td>{{ product_entry.description }}</td>
+        <td>{{ product_entry.price }}</td>
     </tr>
     {% endfor %}
 </table>
 {% endif %}
+<a href="{% url 'main:create_product' %}">Add a new product</a>
 {% endblock %}
