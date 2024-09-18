@@ -2,7 +2,7 @@
 
 
 <details>
-<summary> <h1> Tugas 1 </h1> </summary>
+<summary> <h1> Tugas 2 </h1> </summary>
 <br>
 
 # Pertanyaan 1
@@ -38,7 +38,7 @@ Karena model pada Django berfungsi sebagai basis data untuk apa yang akan ditunj
 </details>
 
 <details>
-<summary> <h1> Tugas 2 </h1> </summary>
+<summary> <h1> Tugas 3 </h1> </summary>
 <br>
 
 # Pertanyaan 1
