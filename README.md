@@ -15,7 +15,7 @@ Saya pertama menginitialize git repo (tetapi belum disambung dengan repo di gith
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html
 
-https://imgur.com/a/WQYfBpF or pbpbagan.png
+[Bagan](./images/pbpbagan.png)
 
 # Pertanyaan 3
 
@@ -71,4 +71,14 @@ method `is_valid()` dalam form Django digunakan untuk memastikan data dalam fiel
 
 Pertama, saya membuat file `forms.py` pada `/main` yang berisi bagaimana forms akan terbuat. Kedua, saya membuat 5 fungsi berbeda, yaitu `create_product()`, `show_xml()`, `show_json()`, `show_xml_by_id()`, dan `show_json_by_id`. Ketiga, saya membuat routing pada `main/urls.py` untuk membuat sistem data delivery dapat diakses. Keempat, saya membuat `create_product_entry.html` dan mengubah `main.html` untuk dapat menampilkan form pada website. Kelima, saya mengubah argumen `DIRS` pada `settings.py` menjadi `'DIRS': [BASE_DIR / 'e_commerce/templates']` untuk menunjukkan Django ke template yang benar. Terakhir, saya mengeksekusi migrasi supaya Django mengimplementasi model yang saya buat.
 
+# Postman
+
+### JSON
+![JSON](./images/1.png)
+### JSON by ID
+![JSON by ID](./images/2.png)
+### XML
+![XML](./images/3.png)
+### XML by ID
+![XML by ID](./images/4.png)
 </details>
