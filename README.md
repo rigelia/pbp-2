@@ -1,4 +1,4 @@
-# Link deployment : http://fadiansah-feryan-tugas2.pbp.cs.ui.ac.id/
+# Link deployment : http://fadiansah-feryan-ecommerce.pbp.cs.ui.ac.id/
 
 
 <details>
