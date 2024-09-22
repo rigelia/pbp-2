@@ -9,15 +9,23 @@
         <th>Product Name</th>
         <th>Product Description</th>
         <th>Product Price</th>
+        <th>Effects</th>
     </tr>
     {% for product_entry in product_entries %}
     <tr>
         <td>{{ product_entry.name }}</td>
         <td>{{ product_entry.description }}</td>
         <td>{{ product_entry.price }}</td>
+        <td>{{ product_entry.effects }}</td>
+
     </tr>
     {% endfor %}
 </table>
+
 {% endif %}
 <a href="{% url 'main:create_product' %}">Add a new product</a>
+<a href="{% url 'main:logout' %}">Logout</a>
+<h5> Last login session :{{ last_login }}</h5>
+{% endblock %}
+{% block meta %}
 {% endblock %}
