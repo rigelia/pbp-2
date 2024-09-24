@@ -133,5 +133,5 @@ Django menetapkan ID sesi ini di perangkat `User`, yang memungkinkan server untu
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
-a
+aa
 </details>
