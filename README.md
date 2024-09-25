@@ -1,5 +1,6 @@
 # Link deployment :
- http://fadiansah-feryan-ecommerce.pbp.cs.ui.ac.id/
+
+### http://fadiansah-feryan-ecommerce.pbp.cs.ui.ac.id/
 
 <details>
 <summary> <h1> Tugas 2 </h1> </summary>
@@ -111,28 +112,22 @@ Pertama, saya membuat file `forms.py` pada `/main` yang berisi bagaimana forms a
 
 ### Apa perbedaan antara _authentication_ dan _authorization_, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
 
-_Authentication_ adalah proses dimana sistem memeriksa apakah request login yang masuk merupakan `User` yang benar atau bukan. _Authorization_ adalah proses verifikasi hak yang dimiliki oleh `User`. 
+_Authentication_ adalah proses dimana sistem memeriksa apakah request login yang masuk merupakan `User` yang benar atau bukan. _Authorization_ adalah proses verifikasi hak yang dimiliki oleh `User`.
 
 Django melakukan _Authentication_ dengan langkah - langkah verifikasi yang ditetapkan dalam model seperti `username` dan `password`. Setelah menerima request login, Django memanggil `authenticate()` untuk mengecek validitas info login. Jika valid, objek `User` akan direturn. Jika salah, Django akan memberi return `none`.
 
 Hak yang dimiliki `User` biasanya ditetapkan pada model juga, contohnya seperti _tag_ `is_superuser` atau `is_staff` dari built-in Django. Django juga bisa menetapkan hak `User` dengan dekorator seperti `@login_required` untuk mengharuskan _session_ tersebut sudah login ke sebuah `User` terlebih dahulu.
 
-
 # Pertanyaan 4
 
 ### Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
 
-Django mengingat pengguna yang login menggunakan `session` dan `cookie`.
-
-Saat `User` login, Django membuat `session` di server untuk menyimpan informasi identifikasi `User`. Setiap sesi diberi ID sesi unik, yang disimpan sebagai `cookie` di perangkat `User`.
-
-Cookie adalah potongan kecil data yang dikirim oleh server dan disimpan di perangkat `User`. Cookie juga menyimpan ID `session` dalam `cookie` yang disebut sessionid.
-
-Django menetapkan ID sesi ini di perangkat `User`, yang memungkinkan server untuk mengaitkan permintaan berikutnya dengan `User` yang sudah diautentikasi.
+Django mengingat pengguna yang login menggunakan `session` dan `cookie`. Saat `User` login, Django membuat `session` di server untuk menyimpan informasi identifikasi `User`. Setiap sesi diberi ID sesi unik, yang disimpan sebagai `cookie` di perangkat `User`.   Cookie adalah potongan kecil data yang dikirim oleh server dan disimpan di perangkat `User`. Cookie juga menyimpan ID `session` dalam `cookie` yang disebut sessionid. Django menetapkan ID sesi ini di perangkat `User`, yang memungkinkan server untuk mengaitkan permintaan berikutnya dengan `User` yang sudah diautentikasi.
 
 # Pertanyaan 5
 
 ### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
-aa
+Pertama, saya membuat function `register`, `login_user`, dan `logout_user` dalam `views.py`. Ketiga fungsi tersebut menangani aktifitas pembuatan akun dan keluar masuk akun tersebut. Pada `login_user`, ada blok kode yang menetapkan cookie untuk mengingat status login user. Pada logout juga ada blok kode yang digunakan untuk menghapus cookie tersebut. Untuk menghubungkan `product` dengan `user`, saya menetapkan foreign key pada inisialisasi `product` yang menunjuk ke suatu user. Untuk menunjukkan pengguna yang sedang login dan status cookie, pada `main.html` ada blok kode yang menunjuk ke username user `user.username` dan waktu login terakhir `last_login`.
+
 </details>

@@ -25,7 +25,7 @@
 {% endif %}
 <a href="{% url 'main:create_product' %}">Add a new product</a>
 <a href="{% url 'main:logout' %}">Logout</a>
-<h5> Last login session :{{ last_login }}</h5>
+<h5>User : {{ user.username }} Last login session :{{ last_login }}</h5>
 {% endblock %}
 {% block meta %}
 {% endblock %}
