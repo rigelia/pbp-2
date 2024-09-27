@@ -17,9 +17,9 @@ from django.contrib import messages
 def show_main(request):
     product_entries = Product.objects.all()
     context = {
-        'user': request.user,
+        "user": request.user,
         "product_entries": product_entries,
-        'last_login': request.COOKIES.get("last_login")
+        "last_login": request.COOKIES.get("last_login"),
     }
     return render(request, "main.html", context)
 
@@ -35,6 +35,24 @@ def create_product(request):
 
     context = {"form": form}
     return render(request, "create_product_entry.html", context)
+
+
+def edit_product(request, id):
+    product = Product.objects.get(pk=id)
+    form = ProductEntry(request.POST or None, instance=product)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse("main:show_main"))
+
+    context = {"form": form}
+    return render(request, "edit_product.html", context)
+
+
+def delete_product(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse("main:show_main"))
 
 
 def register(request):
@@ -69,8 +87,8 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('main:login'))
-    response.delete_cookie('last_login')
+    response = HttpResponseRedirect(reverse("main:login"))
+    response.delete_cookie("last_login")
     return response
 
 
