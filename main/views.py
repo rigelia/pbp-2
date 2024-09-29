@@ -16,10 +16,12 @@ from django.contrib import messages
 @login_required(login_url="/login/")
 def show_main(request):
     product_entries = Product.objects.all()
+    login_success = request.session.pop("login_success", False)
     context = {
         "user": request.user,
         "product_entries": product_entries,
         "last_login": request.COOKIES.get("last_login"),
+        'login_success': login_success,
     }
     return render(request, "main.html", context)
 
@@ -67,7 +69,6 @@ def register(request):
     context = {"form": form}
     return render(request, "register.html", context)
 
-
 def login_user(request):
     if request.method == "POST":
         form = AuthenticationForm(data=request.POST)
@@ -75,12 +76,13 @@ def login_user(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
+            request.session["login_success"] = True  # might be used for something later 
             response = HttpResponseRedirect(reverse("main:show_main"))
             response.set_cookie("last_login", str(datetime.datetime.now()))
-            return response
-
+            return response 
     else:
         form = AuthenticationForm(request)
+
     context = {"form": form}
     return render(request, "login.html", context)
 
@@ -89,6 +91,7 @@ def logout_user(request):
     logout(request)
     response = HttpResponseRedirect(reverse("main:login"))
     response.delete_cookie("last_login")
+    request.session["login_success"] = False 
     return response
 
 

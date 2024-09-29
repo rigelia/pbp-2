@@ -1,31 +1,136 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Welcome to the product entry form!</h1>
 {% if not product_entries %}
 <p>There are no product entries yet.</p>
 {% else %}
-<table>
-    <tr>
-        <th>Product Name</th>
-        <th>Product Description</th>
-        <th>Product Price</th>
-        <th>Effects</th>
-    </tr>
-    {% for product_entry in product_entries %}
-    <tr>
-        <td>{{ product_entry.name }}</td>
-        <td>{{ product_entry.description }}</td>
-        <td>{{ product_entry.price }}</td>
-        <td>{{ product_entry.effects }}</td>
+<style>
+  .hidden {
+    display: none;
+  }
 
-    </tr>
-    {% endfor %}
-</table>
+  .fade-in {
+    animation: fadeIn 0.5s forwards;
+  }
 
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  .sticky-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: #1f2937; /* gray-800 */
+    padding: 1rem;
+    border-bottom: 1px solid #374151; /* gray-700 */
+  }
+</style>
+<body class="bg-gray-800">
+    <!-- Top sticky bar -->
+    <div class="sticky-bar flex justify-between items-center px-4 py-2 bg-gray-900">
+        <div class="flex-1 flex justify-left">
+            <h1 class="font-bold text-white">Shopkeeper</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <h1 class="font-bold text-white">Welcome, {{ user.username }}</h1>
+            <div class="flex rounded-md items-center bg-indigo-600 py-2 px-4">
+                <a href="{% url 'main:logout' %}" class="text-white font-bold hover:underline">Logout</a>
+            </div>
+        </div>
+    </div>
+</body>
+    <!-- Welcome message animation -->
+    <div
+        id="welcome-container"
+        class="flex items-center justify-center min-h-screen bg-gray-800">
+        <div
+            id="welcome-message"
+            class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-5">
+            <h1 class="text-6xl font-bold text-white">
+                Welcome, {{ user.username }}
+            </h1>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden text-gray-300">
+        <h1 class="text-4xl font-bold text-white text-center mt-8 mb-8">Items</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+            {% for product_entry in product_entries %}
+            <!-- Clickable product entry (leads to edit page) -->
+            <div class="bg-gray-900 rounded-lg p-4 hover:bg-gray-700">
+                <a href="{% url 'main:edit_product' product_entry.id %}">
+                    <h2 class="text-xl font-bold text-white">{{ product_entry.name }}</h2>
+                    <p class="text-gray-400">{{ product_entry.description }}</p>
+                    <p class="text-gray-400">Price: ${{ product_entry.price }}</p>
+                </a>
+                <!-- Delete button -->
+                <form method="POST" action="{% url 'main:delete_product' product_entry.id %}" class="mt-2">
+                    {% csrf_token %}
+                    <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+                </form>
+            </div>
+            {% endfor %}
+            
+            <!-- Add product button -->
+            <div class="flex justify-left items-center">
+                <a href="{% url 'main:create_product' %}" 
+                   class="bg-green-500 hover:bg-green-600 text-white rounded-lg p-3 flex items-center justify-center"
+                   style="width: 50px; height: 50px;">
+                    +
+                </a>
+            </div>
+        </div>
+    
+        <h5>User: {{ user.username }} | Last login session: {{ last_login }}</h5>
+    </div>
+    
+    
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const welcomeContainer = document.getElementById("welcome-container");
+      const welcomeMessage = document.getElementById("welcome-message");
+      const mainContent = document.getElementById("main-content");
+
+
+      welcomeContainer.classList.remove("hidden"); // show welcome message
+
+      setTimeout(() => {
+
+        welcomeMessage.classList.add("fade-out"); // fade out welcome message
+
+        setTimeout(() => {
+
+          welcomeContainer.classList.add("hidden"); // hide welcome message
+
+          welcomeMessage.classList.remove("fade-out"); // reset animation
+
+          mainContent.classList.remove("hidden"); // show main content
+        }, 500); // match with animation duration
+      }, 2000); // message shown duration
+    }); // i need to write more comments for scripts dawg
+  </script>
+</body>
 {% endif %}
-<a href="{% url 'main:create_product' %}">Add a new product</a>
-<a href="{% url 'main:logout' %}">Logout</a>
-<h5>User : {{ user.username }} Last login session :{{ last_login }}</h5>
 {% endblock %}
 {% block meta %}
 {% endblock %}

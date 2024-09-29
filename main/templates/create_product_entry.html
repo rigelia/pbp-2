@@ -1,9 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1> Add new product</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add Product"></input>
-</form>
+<div class="container mx-auto mt-10">
+    <!-- Sticky Bar -->
+    <div class="sticky-bar flex justify-between items-center px-4 py-2 bg-gray-900">
+        <div class="flex-1 flex justify-left">
+            <h1 class="font-bold text-white">Shopkeeper</h1>
+        </div>
+        <div class="flex items-center space-x-4">
+            <h1 class="font-bold text-white">Welcome, {{ user.username }}</h1>
+            <div class="flex rounded-md items-center bg-indigo-600 py-2 px-4">
+                <a href="{% url 'main:logout' %}" class="text-white font-bold hover:underline">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Product Form -->
+    <h1 class="text-4xl font-bold text-white text-center mb-8 mt-10">Create New Product</h1>
+    <div class="bg-gray-900 p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+        <form method="POST" action="{% url 'main:create_product' %}">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-white text-sm font-bold mb-2" for="name">Product Name</label>
+                <input class="w-full p-2 rounded-lg bg-gray-800 text-white focus:outline-none" type="text" name="name" id="name" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white text-sm font-bold mb-2" for="description">Description</label>
+                <textarea class="w-full p-2 rounded-lg bg-gray-800 text-white focus:outline-none" name="description" id="description" required></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-white text-sm font-bold mb-2" for="price">Price</label>
+                <input class="w-full p-2 rounded-lg bg-gray-800 text-white focus:outline-none" type="number" name="price" id="price" step="0.01" min="0" required>
+            </div>
+            <div class="flex justify-between items-center">
+                <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">
+                    Create Product
+                </button>
+                <a href="{% url 'main:show_main' %}" class="text-gray-300 hover:text-gray-500">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}
