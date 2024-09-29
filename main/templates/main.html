@@ -1,8 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if not product_entries %}
-<p>There are no product entries yet.</p>
-{% else %}
 <style>
   .hidden {
     display: none;
@@ -130,7 +127,6 @@
     }); // i need to write more comments for scripts dawg
   </script>
 </body>
-{% endif %}
 {% endblock %}
 {% block meta %}
 {% endblock %}

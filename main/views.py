@@ -15,7 +15,7 @@ from django.contrib import messages
 # Create your views here.
 @login_required(login_url="/login/")
 def show_main(request):
-    product_entries = Product.objects.all()
+    product_entries = Product.objects.filter(user=request.user)
     login_success = request.session.pop("login_success", False)
     context = {
         "user": request.user,
@@ -38,7 +38,7 @@ def create_product(request):
     context = {"form": form}
     return render(request, "create_product_entry.html", context)
 
-
+@login_required(login_url="/login/")
 def edit_product(request, id):
     product = Product.objects.get(pk=id)
     form = ProductEntry(request.POST or None, instance=product)
