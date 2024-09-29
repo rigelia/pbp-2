@@ -1,17 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
-  .hidden {
-    display: none;
-  }
+.hover-text {
+    position: relative; 
+    display: block;
+}
 
-  .fade-in {
-    animation: fadeIn 0.5s forwards;
-  }
+.hover-text h2,
+.hover-text p {
+    transition: visibility 0.2s, opacity 0.2s ease;
+}
 
-  .fade-out {
-    animation: fadeOut 0.5s forwards;
-  }
+.hover-text::after {
+    content: attr(data-hover-text);
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: gold; 
+    font-size: 1rem; 
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.2s, opacity 0.2s ease;
+}
+
+.hover-text:hover h2,
+.hover-text:hover p {
+    opacity: 0; 
+    visibility: hidden; 
+}
+
+.hover-text:hover::after {
+    visibility: visible; 
+    opacity: 1; 
+}
+.bottom-fixed {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #1f2937; 
+        padding: 1rem;
+        text-align: center;
+    }
 
   @keyframes fadeIn {
     from {
@@ -74,10 +104,10 @@
             {% for product_entry in product_entries %}
             <!-- Clickable product entry (leads to edit page) -->
             <div class="bg-gray-900 rounded-lg p-4 hover:bg-gray-700">
-                <a href="{% url 'main:edit_product' product_entry.id %}">
+                <a href="{% url 'main:edit_product' product_entry.id %}" class="hover-text" data-hover-text="{{ product_entry.effects }}">
                     <h2 class="text-xl font-bold text-white">{{ product_entry.name }}</h2>
                     <p class="text-gray-400">{{ product_entry.description }}</p>
-                    <p class="text-gray-400">Price: ${{ product_entry.price }}</p>
+                    <p class="text-gray-400">${{ product_entry.price }}</p>
                 </a>
                 <!-- Delete button -->
                 <form method="POST" action="{% url 'main:delete_product' product_entry.id %}" class="mt-2">
@@ -96,8 +126,9 @@
                 </a>
             </div>
         </div>
-    
-        <h5>User: {{ user.username }} | Last login session: {{ last_login }}</h5>
+    <div>
+        <h5 class="flex justify-center bottom-fixed">Last login session: {{ last_login }}</h5>
+    </div>
     </div>
     
     
@@ -129,4 +160,5 @@
 </body>
 {% endblock %}
 {% block meta %}
-{% endblock %}
+<title>Shopkeeper</title>
+{% endblock meta %}
