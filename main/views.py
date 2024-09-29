@@ -33,7 +33,7 @@ def create_product(request):
         product_entry = form.save(commit=False)
         product_entry.user = request.user
         product_entry.save()
-        return redirect("main:show_main")
+        return HttpResponseRedirect(reverse("main:show_main"))
 
     context = {"form": form}
     return render(request, "create_product_entry.html", context)
