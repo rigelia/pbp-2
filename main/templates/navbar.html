@@ -1,0 +1,50 @@
+<nav class="bg-gray-900 fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+            <!-- Menu button -->
+            <div class="flex items-center">
+                <button id="menu-button"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    aria-expanded="false">
+                    <svg class="block h-6 w-6"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+                <div class="flex-shrink-0 ml-4">
+                    <h1 class="font-bold text-white text-xl">Shopkeeper</h1>
+                </div>
+            </div>
+            
+            <!-- Logout button -->
+            <div class="flex items-center">
+                <h1 class="text-gray-300 mr-4">Welcome, {{ user.username }}</h1>
+                <a href="{% url 'main:logout' %}"
+                    class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-600">Logout</a>
+            </div>
+        </div>
+    </div>
+    <!-- Menu -->
+    <div id="menu" class="hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="{% url 'main:show_main' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="{% url 'main:show_main' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</a>
+            <button
+                class="text-gray-300 px-3 py-2 rounded-md text-base font-medium bg-gray-700 w-full text-left">Categories</button>
+            <button
+                class="text-gray-300 px-3 py-2 rounded-md text-base font-medium bg-gray-700 w-full text-left">Cart</button>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.getElementById('menu-button').addEventListener('click', function () { // menu toggle
+        const menu = document.getElementById('menu');
+        menu.classList.toggle('hidden');
+    });
+</script>

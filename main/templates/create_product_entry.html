@@ -3,6 +3,7 @@
 {% block meta %}
 <title>Create Product</title>
 {% endblock meta %}
+{% include 'navbar.html' %}
 <style>
   .sticky-bar {
     position: sticky;
@@ -23,21 +24,10 @@
   }
 </style>
 <body class="bg-gray-800">
-    <!-- Top sticky bar -->
-    <div class="sticky-bar flex justify-between items-center px-4 py-2 bg-gray-900">
-        <div class="flex-1 flex justify-left">
-            <h1 class="font-bold text-white">Shopkeeper</h1>
-        </div>
-        <div class="flex items-center space-x-4">
-            <h1 class="font-bold text-white">Welcome, {{ user.username }}</h1>
-            <div class="flex rounded-md items-center bg-indigo-600 py-2 px-4">
-                <a href="{% url 'main:logout' %}" class="text-white font-bold hover:underline">Logout</a>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Create Product Form -->
-    <div id="main-entry-content" class="container mx-auto mt-10">
+    <div id="main-entry-content" class="container mx-auto mt-28">
         <h1 class="text-4xl font-bold text-white text-center mb-8 mt-10">Create New Product</h1>
         <div class="bg-gray-900 p-6 rounded-lg shadow-lg max-w-lg mx-auto">
             <form method="POST" action="{% url 'main:create_product' %}">
