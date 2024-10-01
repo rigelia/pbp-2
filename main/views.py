@@ -94,7 +94,6 @@ def logout_user(request):
     request.session["login_success"] = False 
     return response
 
-
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(

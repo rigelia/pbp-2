@@ -1,11 +1,10 @@
 <nav class="bg-gray-900 fixed top-0 left-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
-            <!-- Hamburger button for mobile screens -->
+            <!-- Mobile Button on small screens -->
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <button id="menu-button"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                    aria-expanded="false">
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <svg class="block h-6 w-6"
                         xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor"
@@ -15,51 +14,54 @@
                     </svg>
                 </button>
             </div>
-            <!-- Shopkeeper text and main nav items -->
-            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <!-- Shopkeeper text -->
+            <div
+                class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
                     <h1 class="font-bold text-white text-xl">Shopkeeper</h1>
                 </div>
+                <!-- Desktop nav elements -->
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
-                        <!-- Desktop nav links -->
                         <a href="{% url 'main:show_main' %}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="{% url 'main:show_main' %}"
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Products</a>
                         <button
-                            class="text-gray-300 px-3 py-2 rounded-md text-sm font-medium bg-gray-700">Categories</button>
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categories</button>
                         <button
-                            class="text-gray-300 px-3 py-2 rounded-md text-sm font-medium bg-gray-700">Cart</button>
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Cart</button>
                     </div>
                 </div>
             </div>
-            <!-- Right side with Welcome and Logout -->
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <h1 class="text-gray-300 mr-4">Welcome, {{ user.username }}</h1>
+            <!-- Logout button -->
+            <div
+                class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <h1 class="text-gray-300 mr-4 hidden sm:block">Welcome, {{ user.username }}</h1>
                 <a href="{% url 'main:logout' %}"
-                    class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-500">Logout</a>
+                    class="bg-indigo-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-600 transition duration-300">Logout</a>
             </div>
         </div>
     </div>
-    <!-- Mobile menu, toggle visibility with the button -->
-    <div id="mobile-menu" class="sm:hidden hidden">
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden sm:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <a href="{% url 'main:show_main' %}"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
             <a href="{% url 'main:show_main' %}"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</a>
             <button
-                class="text-gray-300 px-3 py-2 rounded-md text-base font-medium bg-gray-700 w-full text-left">Categories</button>
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Categories</button>
             <button
-                class="text-gray-300 px-3 py-2 rounded-md text-base font-medium bg-gray-700 w-full text-left">Cart</button>
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Cart</button>
         </div>
     </div>
 </nav>
 
 <script>
-    document.getElementById('menu-button').addEventListener('click', function () {
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenu.classList.toggle('hidden');
-    });
+document.getElementById('menu-button').addEventListener('click', function () {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+});
+
 </script>

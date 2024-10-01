@@ -55,7 +55,10 @@
     border-bottom: 1px solid #374151; 
 }
 
-/* Footer styles */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
 footer {
     background-color: #1f2937;
     color: white;
@@ -79,7 +82,6 @@ footer {
     {% if not product_entries %}
     <div id="empty-entry-content"
       class="flex flex-col items-center justify-center min-h-screen space-y-4 hidden">
-      <!-- Reduced image size -->
       <img src="{% static 'images/mokoudissapointed.png' %}" alt="Empty"
         class="mb-4" style="max-width: 60%; height: auto;" />
       <div id="main-content"
@@ -127,26 +129,26 @@ footer {
       {% endif %}
     </div>
     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const welcomeContainer = document.getElementById("welcome-container");
-      const welcomeMessage = document.getElementById("welcome-message");
-      const mainContent = document.getElementById("main-content");
-      const emptyEntryContent = document.getElementById("empty-entry-content");
+document.addEventListener("DOMContentLoaded", function () {
+    const welcomeContainer = document.getElementById("welcome-container");
+    const welcomeMessage = document.getElementById("welcome-message");
+    const mainContent = document.getElementById("main-content");
+    const emptyEntryContent = document.getElementById("empty-entry-content");
 
-      welcomeContainer.classList.remove("hidden");
+    welcomeContainer.classList.remove("hidden");
 
-      setTimeout(() => {
-          welcomeMessage.classList.add("fade-out");
+    setTimeout(() => {
+        welcomeMessage.classList.add("fade-out");
 
-          setTimeout(() => {
-              welcomeContainer.classList.add("hidden");
-              welcomeMessage.classList.remove("fade-out");
-              mainContent.classList.remove("hidden");
-              emptyEntryContent.classList.remove("hidden");
-              
-          }, 500);
-      }, 2000);
-  });
+        setTimeout(() => {
+            welcomeContainer.classList.add("hidden");
+            welcomeMessage.classList.remove("fade-out");
+            mainContent.classList.remove("hidden");
+            emptyEntryContent.classList.remove("hidden");
+        }, 500); 
+    }, 2000); 
+});
+
   </script>
   </body>
   {% endblock %}

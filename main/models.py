@@ -10,4 +10,3 @@ class Product(models.Model):
     price = models.IntegerField()
     description = models.TextField()
     effects = models.TextField(default="No effects")
-
