@@ -313,7 +313,7 @@ Untuk atribut item saya menggunakan `card.html` yang berisi atribut suatu produk
 
 Bisa dilihat juga saya membuat seluruh area `card` menjadi tombol untuk mengedit item tersebut. Saya juga menaruh tombol delete di bagian bawah card.
 
-Dalam kasus implementasi `navbar.html`, saya menggunakan spesifikasi untuk membedakan viewport kecil dan viewport besar dan menggunakan sedikit script untuk mengubah class tag pad menu. Untuk implementasi pada page berbeda saya menggunakan tag `{% include 'navbar.html' %}` untuk menampilkannya pada page yang diinginkan
+Dalam kasus implementasi `navbar.html`, saya menggunakan spesifikasi untuk membedakan viewport kecil dan viewport besar dan menggunakan sedikit script untuk mengubah class tag pad menu. Untuk implementasi pada page berbeda saya menggunakan tag `{% include 'navbar.html' %}` untuk menampilkannya pada page yang diinginkan.
 
 # _Blok kode spesifikasi viewport_
 ```html
