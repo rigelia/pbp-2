@@ -16,7 +16,7 @@ Saya pertama menginitialize git repo (tetapi belum disambung dengan repo di gith
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html
 
-[Bagan](md\images\pbpbagan.png)
+[Bagan](md/images/pbpbagan.png)
 
 # Pertanyaan 3
 
@@ -190,16 +190,16 @@ _Responsive design _ adalah konsep penting dalam _website development_ karena  _
 
 ## Contoh website yang menerapkan responsive web design : Twitter
 ### Desktop
-![Twitter Desktop](md\images\twitterdesktop.png)
+![Twitter Desktop](md/images/twitterdesktop.png)
 ### Small Viewport
-![Twitter Small Viewport](md\images\twittersmallviewport.png)
+![Twitter Small Viewport](md/images/twittersmallviewport.png)
 
 ## Contoh website yang tidak menerapkan responsive web design : PWS :(
 
 ### Desktop
-![PWS Desktop](md\images\pwsdesktop.png)
+![PWS Desktop](md/images/pwsdesktop.png)
 ### Small Viewport
-![PWS Small Viewport](md\images\pwssmallviewport.png)
+![PWS Small Viewport](md/images/pwssmallviewport.png)
 
 # Pertanyaan 3
 
@@ -306,10 +306,10 @@ Untuk atribut item saya menggunakan `card.html` yang berisi atribut suatu produk
 ```
 
 ### _Tampilan elemen_
-![Item when not hovered](md\images\itemjuan.png)
+![Item when not hovered](md/images/itemjuan.png)
 
 ### _Tampilan elemen saat di hover_
-![Item when hovered](md\images\itemjuanonhover.png)
+![Item when hovered](md/images/itemjuanonhover.png)
 
 Bisa dilihat juga saya membuat seluruh area `card` menjadi tombol untuk mengedit item tersebut. Saya juga menaruh tombol delete di bagian bawah card.
 
