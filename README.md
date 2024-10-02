@@ -16,7 +16,7 @@ Saya pertama menginitialize git repo (tetapi belum disambung dengan repo di gith
 
 Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html
 
-[Bagan](./images/pbpbagan.png)
+[Bagan](md\images\pbpbagan.png)
 
 # Pertanyaan 3
 
@@ -122,7 +122,7 @@ Hak yang dimiliki `User` biasanya ditetapkan pada model juga, contohnya seperti 
 
 ### Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
 
-Django mengingat pengguna yang login menggunakan `session` dan `cookie`. Saat `User` login, Django membuat `session` di server untuk menyimpan informasi identifikasi `User`. Setiap sesi diberi ID sesi unik, yang disimpan sebagai `cookie` di perangkat `User`.   Cookie adalah potongan kecil data yang dikirim oleh server dan disimpan di perangkat `User`. Cookie juga menyimpan ID `session` dalam `cookie` yang disebut sessionid. Django menetapkan ID sesi ini di perangkat `User`, yang memungkinkan server untuk mengaitkan permintaan berikutnya dengan `User` yang sudah diautentikasi.
+Django mengingat pengguna yang login menggunakan `session` dan `cookie`. Saat `User` login, Django membuat `session` di server untuk menyimpan informasi identifikasi `User`. Setiap sesi diberi ID sesi unik, yang disimpan sebagai `cookie` di perangkat `User`. Cookie adalah potongan kecil data yang dikirim oleh server dan disimpan di perangkat `User`. Cookie juga menyimpan ID `session` dalam `cookie` yang disebut sessionid. Django menetapkan ID sesi ini di perangkat `User`, yang memungkinkan server untuk mengaitkan permintaan berikutnya dengan `User` yang sudah diautentikasi.
 
 # Pertanyaan 5
 
@@ -131,3 +131,219 @@ Django mengingat pengguna yang login menggunakan `session` dan `cookie`. Saat `U
 Pertama, saya membuat function `register`, `login_user`, dan `logout_user` dalam `views.py`. Ketiga fungsi tersebut menangani aktifitas pembuatan akun dan keluar masuk akun tersebut. Pada `login_user`, ada blok kode yang menetapkan cookie untuk mengingat status login user. Pada logout juga ada blok kode yang digunakan untuk menghapus cookie tersebut. Untuk menghubungkan `product` dengan `user`, saya menetapkan foreign key pada inisialisasi `product` yang menunjuk ke suatu user. Untuk menunjukkan pengguna yang sedang login dan status cookie, pada `main.html` ada blok kode yang menunjuk ke username user `user.username` dan waktu login terakhir `last_login`.
 
 </details>
+
+<details>
+<summary><h1>Tugas 5</h1></summary>
+<br>
+
+# Pertanyaan 1
+
+### Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+
+Urutan prioritas penerapan CSS _Styles_ ke elemen HTML ditentukan oleh Level yang ada pada CSS. Level tersebut adalah aturan yang ditetapkan browser pada selector. Jika ada beberapa aturan CSS yang menargetkan elemen yang sama, browser akan menggunakan aturan yang paling rendah spesifik dalam kode.
+
+### Contoh :
+
+### Level paling umum
+```css
+footer {
+    background-color: #1f2937;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+```
+
+### Level tengah
+```css
+.hover-text {
+    position: relative; 
+    display: block;
+}
+```
+
+### Level rendah
+```css
+#header { 
+    color: black; 
+    }
+```
+
+### Level paling rendah
+```css
+    <div id="welcome-message"
+      class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-5">
+      <h1 class="text-6xl font-bold text-white">
+        Welcome, {{ user.username }}
+      </h1>
+    </div>
+```
+
+Selector yang levelnya paling rendah yang ada mengambil prioritas aturan _styling_
+
+
+# Pertanyaan 2
+
+### Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+
+_Responsive design _ adalah konsep penting dalam _website development_ karena  _Responsive design_ memastikan bahwa situs web dan aplikasi memberikan pengalaman pengguna yang nyaman pada perangkat dan ukuran layar yang beragam. Dengan banyaknya tipe perangkat beda yang digunakan untuk mengakses web—seperti ponsel pintar, tablet, laptop, dan desktop, sangat penting untuk memastikan bahwa situs web beradaptasi dan berfungsi dengan baik, mengikuti _viewport_ perangkat. 
+
+## Contoh website yang menerapkan responsive web design : Twitter
+### Desktop
+![Twitter Desktop](md\images\twitterdesktop.png)
+### Small Viewport
+![Twitter Small Viewport](md\images\twittersmallviewport.png)
+
+## Contoh website yang tidak menerapkan responsive web design : PWS :(
+
+### Desktop
+![PWS Desktop](md\images\pwsdesktop.png)
+### Small Viewport
+![PWS Small Viewport](md\images\pwssmallviewport.png)
+
+# Pertanyaan 3
+
+### Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+
+Margin, border, dan padding merupakan konsep utama dalam CSS yang digunakan untuk menentukan ruang di sekitar dan di dalam elemen HTML. Nama - nama tersebut merupakan bagian dari _box model_ yang menjelaskan bagaimana elemen-elemen ditata secara visual pada halaman. Margin menentukan aturan styling jarak luar minimal antara satu elemen dan elemen lain. Border menentukan aturan styling area di antara margin dan padding.
+padding menentukan aturan styling di antara dalam elemen dan border.
+
+### Margin
+```css
+.box {
+    margin: 20px;  /*Menambahkan margin sebesar 20 pixel di semua arah*/
+    mt: 28px; /*Menambahkan margin sebesar 28 pixel di atas elemen*/
+}
+```css
+.box {
+    border: 2px solid black;  /* Menambahkan border hitam sebesar 2 pixel ke elemen*/
+    border-right: 3px dotted blue; /* Menambahkan border putus - putus biru sebesar 3 pixel ke kanan elemen*/
+}
+```
+```css
+.box {
+    padding: 20px;  /*Menambahkan padding sebesar 20 pixel ke dalam elemen*/
+    padding-left: 25px; /*Menambahkan padding sebesar 25 pixel ke kiri dalam elemen*/
+}
+```
+
+
+### Border
+
+# Pertanyaan 4
+
+### Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+
+Flexbox adalah _layout model_ CSS yang dirancang untuk membuat layout yang mendistribusikan ruang secara dinamis dan menata item dalam tempat yang fleksibel. _Layout model_ ini sangat berguna untuk layout yang elemen-elemennya perlu ditata dalam kaitannya satu sama lain dalam satu sumbu _alignment_ (seperti dalam kolom atau baris). Flexbox menyederhanakan proses pembuatan layout yang fleksibel dan responsif tanpa menggunakan float atau posisi yang kompleks.
+
+# Pertanyaan 5
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+
+Untuk `login.html` dan `register.html` saya menggunakan design yang mirip dan tidak mengimplementasikan `navbar.html` karena saya rasa navbar tidak akan digunakan oleh user yang belum login.
+
+### _Class tag general yang digunakan untuk login dan register_
+```html
+<div class="flex items-center justify-center min-h-screen bg-gray-800">
+  <div class="w-full max-w-md p-6 bg-gray-700 rounded-lg shadow-md">
+```
+
+Untuk tambah produk sendiri saya menggunakan class container untuk basis penataannya
+
+### _Class tag pada elemen container penambahan produk_
+```html
+    <div id="main-entry-content" class="container mx-auto mt-28">
+        <h1 class="text-4xl font-bold text-white text-center mb-8 mt-10">Create New Product</h1>
+        <div class="bg-gray-900 p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+```
+
+Untuk situasi saat belum ada item yang ditambahkan saya menggunakan argumen `if not product entries` untuk mengecek apakah sudah ada item atau tidak. Untuk image nya sendiri saya menggunakan tag `static` Django.
+
+### _Implementasi pengecekan jika item kosong_ 
+```html
+  <div class="mt-28">
+    {% if not product_entries %}
+    <div id="empty-entry-content"
+      class="flex flex-col items-center justify-center min-h-screen space-y-4 hidden">
+      <img src="{% static 'images/mokoudissapointed.png' %}" alt="Empty"
+        class="mb-4" style="max-width: 60%; height: auto;" />
+      <div id="main-content"
+        class="flex flex-col hidden text-gray-300 items-center justify-center">
+        <div class="flex flex-col justify-center items-center">
+          <p class="text-sm text-center text-gray-300">
+            No items (┬┬﹏┬┬)
+          </p>
+          <a href="{% url 'main:create_product' %}"
+            class="font-medium text-indigo-200 hover:text-indigo-300">
+            Add some here!
+          </a>
+        </div>
+        <div>
+          <footer>
+            <h5>Last login session: {{ last_login }} </h5>
+          </footer>
+        </div>
+      </div>
+```
+
+Untuk atribut item saya menggunakan `card.html` yang berisi atribut suatu produk dan disusun menggunakan tag `<p>`. Spesial untuk melihat attribute field `effects` pada card, saya menggunakan properti `onhover` jadi hanya akan muncul saat cursor di atas elemen card tersebut
+
+### _Blok kode card.html_
+```html
+<!-- card.html -->
+<div class="bg-gray-900 rounded-lg p-4 hover:bg-gray-700">
+    <a href="{% url 'main:edit_product' product_entry.id %}" class="hover-text" data-hover-text="{{ product_entry.effects }}">
+        <h2 class="text-xl font-bold text-white">{{ product_entry.name }}</h2>
+        <p class="text-gray-400">{{ product_entry.description }}</p>
+        <p class="text-gray-400">${{ product_entry.price }}</p>
+    </a>
+    <!-- Delete button -->
+    <form method="POST" action="{% url 'main:delete_product' product_entry.id %}" class="mt-2">
+        {% csrf_token %}
+        <button type="submit" class="text-red-500 hover:text-red-700">Delete</button>
+    </form>
+</div>
+```
+
+### _Tampilan elemen_
+![Item when not hovered](md\images\itemjuan.png)
+
+### _Tampilan elemen saat di hover_
+![Item when hovered](md\images\itemjuanonhover.png)
+
+Bisa dilihat juga saya membuat seluruh area `card` menjadi tombol untuk mengedit item tersebut. Saya juga menaruh tombol delete di bagian bawah card.
+
+Dalam kasus implementasi `navbar.html`, saya menggunakan spesifikasi untuk membedakan viewport kecil dan viewport besar dan menggunakan sedikit script untuk mengubah class tag pad menu. Untuk implementasi pada page berbeda saya menggunakan tag `{% include 'navbar.html' %}` untuk menampilkannya pada page yang diinginkan
+
+# _Blok kode spesifikasi viewport_
+```html
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+            <!-- Mobile Button on small screens -->
+            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <button id="menu-button"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                    <svg class="block h-6 w-6" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+```
+dan
+
+```html
+    <div id="mobile-menu" class="hidden sm:hidden">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="{% url 'main:show_main' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="{% url 'main:show_main' %}"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Products</a>
+            <button
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Categories</button>
+            <button
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left">Cart</button>
+        </div>
+    </div>
+```
