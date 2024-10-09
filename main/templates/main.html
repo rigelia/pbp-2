@@ -177,8 +177,8 @@
       <!-- Edit Product Modal -->
       <div id="editProductModal" class="modal">
         <div class="modal-content">
-          <span class="close">&times;</span>
-          <div id="editProductContent"></div>
+          <div id="editProductContent">
+          </div>
         </div>
       </div>
       <footer>
@@ -215,25 +215,26 @@ $(document).ready(function () {
     const addModal = $('#addProductModal');
     const addProductForm = $('#addProductForm');
 
+
     $('#openModalBtn').click(function () {
         addModal.show();
     });
 
-    // Close the modal when clicking outside of the modal content
+    // Close modal when clicking outside of the modal content
     $(window).click(function (event) {
         if (event.target === addModal[0]) {
             addModal.hide();
         }
     });
 
-    // Handle form submission via AJAX
+
     addProductForm.submit(function (e) {
-        e.preventDefault();  // Prevent the default form submission
+        e.preventDefault(); 
 
         $.ajax({
             url: addProductForm.attr('action'),  
             type: 'POST',
-            data: addProductForm.serialize(),  // Serialize form data
+            data: addProductForm.serialize(),  
             headers: { 'X-Requested-With': 'XMLHttpRequest' },
             success: function (response) {
                 if (response.status === 'success') {
@@ -250,25 +251,37 @@ $(document).ready(function () {
     });
 
       /// edit product AJAX
-      $(document).on('click', '.ajax-get-link', function (e) {
-        e.preventDefault()
-        const productId = $(this).data('id')
-        const url = `/edit/${productId}/` 
+      $(document).ready(function () {
+        const editModal = $('#editProductModal');  
+        const editProductContent = $('#editProductContent');  
+    
 
-        $.ajax({
-          url: url,
-          type: 'GET',
-          headers: { 'X-Requested-With': 'XMLHttpRequest' },
-          success: function (response) {
-            $('#editProductContent').html(response.html)
-            editModal.show()
-          },
-          error: function (xhr, errmsg, err) {
-            console.log(xhr.status + ': ' + xhr.responseText)
-            alert('Error occurred. Please try again.')
-          }
-        })
-      })
+        $(document).on('click', '.ajax-get-link', function (e) {
+            e.preventDefault();
+            const productId = $(this).data('id');
+            const url = `/edit/${productId}/`;
+    
+            $.ajax({
+                url: url,
+                type: 'GET',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' },
+                success: function (response) {
+                    editProductContent.html(response.html);  
+                    editModal.show();  
+                },
+                error: function (xhr, errmsg, err) {
+                    console.log(xhr.status + ': ' + xhr.responseText);
+                    alert('Error occurred. Please try again.');
+                }
+            });
+        });
+    
+        $(window).click(function (event) {
+            if (event.target === editModal[0]) {
+                editModal.hide();  
+            }
+        });
+    });
 
       // edit product form submission
       $(document).on('submit', '#editProductForm', function (e) {
@@ -333,7 +346,6 @@ $(document).ready(function () {
                 throw new Error('Network response was not ok');
             }
 
-            // Parse the response and extract the main content
             const html = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
