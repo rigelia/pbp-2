@@ -409,7 +409,7 @@ dan
   </div>
 </div>
 ```
-
+</details>
 <details>
 <summary><h1>Tugas 6</h1></summary>
 
@@ -621,3 +621,4 @@ async function asyncRefresh() {
 
 setInterval(asyncRefresh, 30000);
 ```
+</details>
