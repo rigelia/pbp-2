@@ -12,6 +12,7 @@ from main.views import (
     logout_user,
     register,
     create_product_ajax,
+    create_mood_flutter,
 
 )
 
@@ -30,5 +31,6 @@ urlpatterns = [
     path("register/", register, name="register"),
     path("xml/<uuid:id>/", show_xml_by_id, name="show_xml_by_id"),
     path("json/<uuid:id>/", show_json_by_id, name="show_json_by_id"),
+    path('create-flutter/', create_mood_flutter, name='create_mood_flutter'),
     
 ]

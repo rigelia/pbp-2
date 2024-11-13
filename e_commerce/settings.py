@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "http://pbp.cs.ui.ac.id/fadiansah.fer
 
 INSTALLED_APPS = [
     'main',
+    'authentication',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,9 +53,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
-ROOT_URLCONF = 'e_commerce.urls'
+ROOT_URLCONF = 'main.urls'
 
 TEMPLATES = [
     {
@@ -126,3 +130,10 @@ STATIC_ROOT = BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CSRF_TRUSTED_ORIGINS = ["http://localhost","http://127.0.0.1","https://fadiansah-feryan-ecommerce.pbp.cs.ui.ac.id/","http://fadiansah-feryan-ecommerce.pbp.cs.ui.ac.id/"]
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'

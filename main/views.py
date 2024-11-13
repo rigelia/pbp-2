@@ -13,7 +13,7 @@ from main.forms import ProductEntry
 from django.contrib import messages
 from django.views.decorators.http import require_http_methods, require_POST
 from django.utils.html import strip_tags
-
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url="/login/")
@@ -137,6 +137,24 @@ def login_user(request):
 
     context = {"form": form}
     return render(request, "login.html", context)
+
+@csrf_exempt
+def create_mood_flutter(request):
+    if request.method == 'POST':
+
+        data = json.loads(request.body)
+        new_mood = MoodEntry.objects.create(
+            user=request.user,
+            mood=data["mood"],
+            mood_intensity=int(data["mood_intensity"]),
+            feelings=data["feelings"]
+        )
+
+        new_mood.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
 
 
 def logout_user(request):
